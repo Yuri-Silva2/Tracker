@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 public class Invoice {
     private final String partner;
     private final String number;
-    private final String situation;
     private final String branch;
     private final String type;
     private final String issuanceDate;
@@ -25,7 +24,6 @@ public class Invoice {
     public Invoice(
             String partner,
             String number,
-            String situation,
             String branch,
             String type,
             String issuanceDate,
@@ -43,7 +41,6 @@ public class Invoice {
     ) {
         this.partner = partner;
         this.number = number;
-        this.situation = situation;
         this.branch = branch;
         this.type = type;
         this.issuanceDate = issuanceDate;
@@ -66,10 +63,6 @@ public class Invoice {
 
     public String number() {
         return number;
-    }
-
-    public String situation() {
-        return situation;
     }
 
     public String branch() {
