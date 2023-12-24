@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.tracker.Tracker;
 
 import java.io.IOException;
 
