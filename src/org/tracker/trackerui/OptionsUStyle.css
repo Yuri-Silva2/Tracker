@@ -1,0 +1,23 @@
+.title {
+    -fx-background-color: #6ac0ff;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.right-pane {
+    -fx-background-color: rgb(230, 230, 230)
+}
+
+.left-pane {
+    -fx-background-color: #6ac0ff;
+}
+
+.buttons {
+    -fx-background-radius: 10 10 10 10;
+    -fx-background-color: #424242;
+    -fx-text-fill: rgb(230, 230, 230);
+}
+
+.text-field:focused {
+    -fx-border-color: #424242;
+    -fx-background-color: #ffffff;
+}

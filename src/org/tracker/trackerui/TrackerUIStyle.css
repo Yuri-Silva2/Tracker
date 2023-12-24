@@ -1,0 +1,10 @@
+.pane {
+    -fx-background-color: #e2e2e2;
+}
+
+.button {
+    -fx-background-color: #6ac0ff;
+    -fx-background-radius: 30 30 30 30;
+    -fx-border-color: transparent;
+    -fx-text-alignment: center;
+}
