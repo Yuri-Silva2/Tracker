@@ -54,7 +54,6 @@ public class ExcelDataReader {
     private Invoice createObject(Row row) {
         String partner = getStringValue(row, 14);
         String number = getStringValue(row, 10);
-        String situation = getStringValue(row, 12);
         String branch = getStringValue(row, 1);
         String type = getStringValue(row, 6);
         String date = getStringValue(row, 7);
@@ -68,7 +67,7 @@ public class ExcelDataReader {
         String cstICMS = getStringValue(row, 35);
         int taxRate = getIntValue(row, 37);
         BigDecimal icms = getDecimalValue(row, 38);
-        return new Invoice(partner, number, situation, branch,
+        return new Invoice(partner, number, branch,
                 type, date, entryDate, model, series, cfop, productAmount,
                 productNumber, productID, cstICMS, taxRate, icms,
                 00.00);
