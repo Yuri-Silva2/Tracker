@@ -1,4 +1,4 @@
-package org.tracker.trackerui.controller;
+package org.tracker;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -6,7 +6,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.tracker.Tracker;
 import org.tracker.report.ReportType;
 
 import java.io.File;

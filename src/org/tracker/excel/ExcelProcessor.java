@@ -6,6 +6,7 @@ import org.tracker.report.PresumedReport;
 import org.tracker.report.Report;
 import org.tracker.report.builder.ConferenceReportBuilder;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -22,8 +23,8 @@ public class ExcelProcessor {
         queue = new ExcelQueue();
     }
 
-    public void addToQueue(String filePath) {
-        queue.enqueue(filePath);
+    public void addToQueue(File file) {
+        queue.enqueue(file.getPath());
     }
 
     public void processPresumedFiles() {

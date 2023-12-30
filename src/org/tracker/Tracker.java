@@ -12,19 +12,18 @@ public class Tracker {
 
     private static ExcelProcessor excelProcessor;
 
-    public static void createQueue(List<File> files) {
+    protected static void createQueue(List<File> files) {
         excelProcessor = new ExcelProcessor();
-
-        files.forEach(file -> excelProcessor.addToQueue(file.getPath()));
+        files.forEach(excelProcessor::addToQueue);
     }
 
-    public static void initialize(ReportType reportType) {
+    protected static void initialize(ReportType reportType) {
         if (reportType.equals(ReportType.FAF)) excelProcessor.processFafFiles();
         else if (reportType.equals(ReportType.PRESUMED)) excelProcessor.processPresumedFiles();
         else throw new RuntimeException("Error! Unknown report type.");
     }
 
-    public static BigDecimal getArchivesValue() {
+    protected static BigDecimal getArchivesValue() {
         return excelProcessor.getBigDecimal();
     }
 

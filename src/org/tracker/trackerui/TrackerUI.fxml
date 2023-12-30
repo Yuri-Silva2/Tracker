@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0"
             prefWidth="300.0" stylesheets="@TrackerUIStyle.css" xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tracker.trackerui.controller.TrackerUIController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.tracker.TrackerUIController">
     <center>
         <AnchorPane prefHeight="136.0" prefWidth="350.0" styleClass="pane" BorderPane.alignment="CENTER">
             <children>
