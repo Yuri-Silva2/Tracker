@@ -3,6 +3,7 @@ package org.tracker.report.builder;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.DuplicateHeaderMode;
+import org.tracker.TrackerUtils;
 import org.tracker.model.Invoice;
 
 import java.io.BufferedWriter;
@@ -18,7 +19,6 @@ import java.util.regex.Pattern;
 public class FaFReportBuilder implements ReportBuilder {
 
     private final String PATH = System.getProperty("user.home") + "/Downloads/";
-    private final String PRESUMED_FILE_PREFIX = "Presumed";
 
     private BigDecimal finalValue = BigDecimal.ZERO;
 
@@ -69,7 +69,8 @@ public class FaFReportBuilder implements ReportBuilder {
 
     private void writeInvoicesInFile(ArrayList<?>... list) {
         try {
-            String fileName = createFileWithNumber();
+            String FAF_FILE_PREFIX = "Presumed";
+            String fileName = TrackerUtils.createFileWithNumber(FAF_FILE_PREFIX, PATH);
 
             CSVFormat csvFormat = CSVFormat.Builder.create()
                     .setDelimiter(';')
@@ -87,35 +88,6 @@ public class FaFReportBuilder implements ReportBuilder {
 
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    private String createFileWithNumber() {
-        String fileNameWithPrefix = PRESUMED_FILE_PREFIX + ".csv";
-
-        File file = new File(PATH + fileNameWithPrefix);
-
-        if (file.exists()) {
-            File[] files = new File(PATH).listFiles((dir, name) ->
-                    name.matches("^" + PRESUMED_FILE_PREFIX + " \\(" + "(\\d+)\\" + ")" + ".csv$"));
-            int maxNumber = 0;
-
-            if (files != null) {
-                for (File f : files) {
-                    Matcher matcher = Pattern.compile("^" + PRESUMED_FILE_PREFIX + " \\(" + "(\\d+)\\" + ")" + ".csv$")
-                            .matcher(f.getName());
-
-                    if (matcher.find()) {
-                        int number = Integer.parseInt(matcher.group(1));
-                        maxNumber = Math.max(maxNumber, number);
-                    }
-                }
-            }
-
-            return PRESUMED_FILE_PREFIX + " (" + (maxNumber + 1) + ").csv";
-
-        } else {
-            return fileNameWithPrefix;
         }
     }
 

@@ -3,6 +3,7 @@ package org.tracker.report.builder;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.DuplicateHeaderMode;
+import org.tracker.TrackerUtils;
 import org.tracker.model.Value;
 
 import java.io.BufferedWriter;
@@ -46,7 +47,8 @@ public class ConferenceReportBuilder implements ReportBuilder {
 
     private void writeValuesInFile(ArrayList<?>... list) {
         try {
-            String fileName = createFileWithNumber();
+            String CONFERENCE_FILE_PREFIX = "Relatorio por dia";
+            String fileName = TrackerUtils.createFileWithNumber(CONFERENCE_FILE_PREFIX, PATH);
 
             CSVFormat csvFormat = CSVFormat.Builder.create()
                     .setDelimiter(';')
@@ -64,34 +66,6 @@ public class ConferenceReportBuilder implements ReportBuilder {
 
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    private String createFileWithNumber() {
-        String fileNameWithPrefix = "Relatorio por dia" + ".csv";
-
-        File file = new File(PATH + fileNameWithPrefix);
-
-        if (file.exists()) {
-            File[] files = new File(PATH).listFiles((dir, name) ->
-                    name.matches("^" + "Relatorio por dia" + " \\(" + "(\\d+)\\" + ")" + ".csv$"));
-            int maxNumber = 0;
-
-            if (files != null) {
-
-                for (File f : files) {
-                    Matcher matcher = Pattern.compile("^" + "Relatorio por dia" + " \\(" + "(\\d+)\\" + ")" + ".csv$")
-                            .matcher(f.getName());
-
-                    if (matcher.find()) {
-                        int number = Integer.parseInt(matcher.group(1));
-                        maxNumber = Math.max(maxNumber, number);
-                    }
-                }
-            }
-            return "Relatorio por dia" + " (" + (maxNumber + 1) + ").csv";
-        } else {
-            return fileNameWithPrefix;
         }
     }
 }
