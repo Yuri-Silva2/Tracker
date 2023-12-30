@@ -1,5 +1,6 @@
 package org.tracker;
 
+import javafx.event.Event;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -29,7 +30,7 @@ public class TrackerUIController {
 
     public void onFafButtonClicked(MouseEvent event) {
         if (!selectedFafFile) {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = getStage(event);
 
             List<File> files = createFileChooser(stage);
             if (files == null) return;
@@ -45,7 +46,7 @@ public class TrackerUIController {
 
     public void onPresumedButtonClicked(MouseEvent event) {
         if (!selectedPresumedFile) {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = getStage(event);
 
             List<File> files = createFileChooser(stage);
             if (files == null) return;
@@ -75,7 +76,6 @@ public class TrackerUIController {
             selectedFafFile = false;
             presumedButton.setDisable(false);
             updateTotalValue();
-
         }
     }
 
@@ -91,5 +91,9 @@ public class TrackerUIController {
     private void updateTotalValue() {
         total_value.setText(String.valueOf(Tracker.getArchivesValue())
                 .replace(".", ","));
+    }
+
+    private Stage getStage(Event event) {
+        return (Stage) ((Node) event.getSource()).getScene().getWindow();
     }
 }
