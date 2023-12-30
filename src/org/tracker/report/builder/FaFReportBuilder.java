@@ -7,14 +7,11 @@ import org.tracker.TrackerUtils;
 import org.tracker.model.Invoice;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class FaFReportBuilder implements ReportBuilder {
 
