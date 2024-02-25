@@ -37,10 +37,6 @@ public class FaFProcessing implements Processing {
         }
     }
 
-    /*
-        Inserir todas as filiais necessárias
-     */
-
     @Override
     public void checkData() {
         invoices.removeIf(invoice -> !Objects.equals(invoice.branch(), "1000") &&
